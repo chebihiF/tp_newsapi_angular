@@ -8,11 +8,16 @@ import { NewsApiService } from 'src/app/services/news-api.service';
 })
 export class NewsComponent implements OnInit {
 
+
+  newsData:any
+
   constructor(private newsApiService:NewsApiService) { }
 
   ngOnInit(): void {
-    this.newsApiService.getNews().subscribe((data)=>{
-      console.log(data);
+    this.newsApiService.getNews().subscribe((data:any)=>{
+      this.newsData = data["articles"]
+      console.log(this.newsData);
+      
     })
   }
 
